@@ -41,10 +41,17 @@ const createGrid = (columnCount) => {
     } 
 }
 
-createGrid(16); 
-//Create the mouseover event listeners for the gridSquares in the loop above
-//Create a button and create a click listener to fire a prompt that takes
-//a new value for the amount of columns the grid should have and undo
-//the existing grid to create the new one.
+const newGridButton = document.querySelector("#newGrid");
+newGridButton.addEventListener('click', () => {
+    let squaresNumber = prompt("Please specify number of squares per side (maximum 100):");
+    if(squaresNumber>100){squaresNumber=100;}
+    if(squaresNumber<0) {squaresNumber=0;}
+    while(container.firstChild){
+        container.removeChild(container.firstChild);
+    }
+    createGrid(squaresNumber);
+});
+
+createGrid(16);
 
 
